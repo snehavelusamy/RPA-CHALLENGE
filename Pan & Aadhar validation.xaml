@@ -1,0 +1,82 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Pan___Aadhar_validation" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="593,1633" sap2010:WorkflowViewState.IdRef="Pan___Aadhar_validation_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="21">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="16">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Pan___Aadhar_validation" sap:VirtualizedContainerService.HintSize="539,1468" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Input" />
+      <Variable x:TypeArguments="x:Boolean" Name="Op" />
+      <Variable x:TypeArguments="x:String" Name="Pan" />
+      <Variable x:TypeArguments="x:Boolean" Name="Panout" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="497,92" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="True" Label="Enter your Aadhar card number " Title="Aadhar number">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[Input]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="497,92" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="True" Label="Enter your PAN card number" Title="PAN card number">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[Pan]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:IsMatch BuilderPattern="^\d{4}\s\d{4}\s\d{4}$" DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[Input]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;^\\d{4}\\s\\d{4}\\s\\d{4}$&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="^\d{4}\s\d{4}\s\d{4}$" RegexOption="IgnoreCase" Result="[Op]" />
+    <ui:IsMatch BuilderPattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" DisplayName="Is Match" sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="IsMatch_2" Input="[Pan]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;[A-Z]{5}[0-9]{4}[A-Z]{1}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" RegexOption="IgnoreCase" Result="[Panout]" />
+    <Switch x:TypeArguments="x:Boolean" DisplayName="Switch" Expression="[Op]" sap:VirtualizedContainerService.HintSize="497,338" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <ui:WriteTextFile x:Key="True" DisplayName="Write Text File" FileName="E:\SNEHA\Aadhar.txt" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[Input]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="False" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Please enter a valid number&quot;]" />
+    </Switch>
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Your number is correct&quot;]" />
+    <Switch x:TypeArguments="x:Boolean" DisplayName="Switch" Expression="[Panout]" sap:VirtualizedContainerService.HintSize="497,338" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+      <ui:WriteTextFile x:Key="True" DisplayName="Write Text File" FileName="E:\SNEHA\Pan.txt" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[Pan]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="False" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Please enter a valid number&quot;]" />
+    </Switch>
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="497,59" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;Your number is correct&quot;]" />
+  </Sequence>
+</Activity>
